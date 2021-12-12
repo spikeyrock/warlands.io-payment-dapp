@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap');
+
+:root {
+  --button-bg: transparent;
+  --button-active-bg: #3128369f;
+  --small-button-bg: #919191;
+  --small-button-active-bg: #646464;
+  --button-text: #ffffff;
+  --card: transparent;
+  --accountText: #ffffff;
+  --statusText: #ffffff;
+  --bg-gradient_1: rgb(162, 196, 240);
+  --bg-gradient_2: rgb(240, 162, 217);
+  --gradient_1: rgb(209, 216, 224, 0.6);
+  --gradient_2: rgb(236, 71, 214, 0.3);
+  --gradient_3: rgb(241, 2, 0, 0.8);
+  --success: #24a13f;
+  --warning: #ca5824;
+  --error: #ca2f24;
+  --wallet: #;
+}
+
+* {
+  font-family: "Cinzel", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: fixed;
+
+
+}
+
+p {
+  color: #FFFFFF;
+  background: transparent;
+}
+
+.colorGradient {
+  background: fixed;
+
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  min-width: 100%;
+  background-image: url("../assets/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card {
+  background-color: var(--card);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  width: 350px;
+  transition: 0.3s;
+  margin: 50px;
+  position: relative;
+  border: 3px solid rgb(255, 187, 0);
+
+
+}
+
+.card:hover {
+  -webkit-box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+  box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.button:hover {
+  -webkit-box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.card_header {
+  height: 294px;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card_header_image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+  object-fit: contain;
+  width: 99%;
+  margin-top: 60px;
+}
+
+.card_body {
+  padding: 15px;
+  margin-top: 25px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 0, 0, 0.2);
+
+  border-radius: 15px;
+  justify-content: center;
+
+
+}
+
+#silver {
+  background-color: rgba(56, 29, 18, 0.719) !important;
+}
+
+#gold {
+  background-color: rgba(64, 19, 100, 0.562) !important;
+}
+
+.card_body_view_contract {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.card_footer {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 15px;
+  right: 10px;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.spin {
+  animation: item-spin infinite 20s linear;
+}
+
+.statusText {
+  color: var(--statusText);
+  font-weight: normal;
+  text-align: center;
+}
+
+.accountText {
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.ns {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+._90 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(-90deg);
+}
+
+.button {
+  display: inline-block;
+  padding: 7px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: var(--button-text);
+  background-color: var(--button-bg);
+  border: 1px solid rgb(255, 187, 0);
+  border-radius: 5px;
+  margin-bottom: 2px;
+  transform: skew(-6deg);
+
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+.button:active {
+  background-color: var(--button-active-bg);
+}
+
+.small_button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: var(--button-text);
+  background-color: var(--small-button-bg);
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 2px;
+}
+
+.small_button:disabled {
+  opacity: 0.5;
+}
+
+.small_button:active {
+  background-color: var(--small-button-active-bg);
+}
+
+@keyframes item-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Navbar {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0px;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 3px solid rgb(255, 187, 0);
+}
+
+.Navbar:hover {
+  border-bottom: 3px solid rgb(255, 187, 0);
+  text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+  box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
