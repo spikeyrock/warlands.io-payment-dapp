@@ -6,8 +6,8 @@ import gol from "../assets/goldchest.png";
 import sil from "../assets/silverchest.png";
 import bg from "../assets/background.png"
 
+//selection sets according to percentages
 const silver_chars = ["C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Idore-1", "C-Lucius-1", "C-Maze-1", "C-Sabrina-1", "C-Templar-1", "C-Theia-1"];
-
 const gold_chars = ["C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Idore-1", "C-Lucius-1", "C-Maze-1", "C-Sabrina-1", "C-Templar-1", "C-Theia-1",
   "C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Idore-1", "C-Lucius-1", "C-Maze-1", "C-Sabrina-1", "C-Templar-1", "C-Theia-1",
   "C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Idore-1", "C-Lucius-1", "C-Maze-1", "C-Sabrina-1", "C-Templar-1", "C-Theia-1",
@@ -18,7 +18,6 @@ const gold_chars = ["C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Ido
   "C-Fabian-2", "C-Gwen-2", "C-Hector-2", "C-Ho-Jin-2", "C-Idore-2", "C-Lucius-2", "C-Maze-2", "C-Sabrina-2", "C-Templar-2", "C-Theia-2",
   "C-Fabian-2", "C-Gwen-2", "C-Hector-2", "C-Ho-Jin-2", "C-Idore-2", "C-Lucius-2", "C-Maze-2", "C-Sabrina-2", "C-Templar-2", "C-Theia-2",
   "C-Fabian-2", "C-Gwen-2", "C-Hector-2", "C-Ho-Jin-2", "C-Idore-2", "C-Lucius-2", "C-Maze-2", "C-Sabrina-2", "C-Templar-2", "C-Theia-2"];
-
 const diamond_chars = ["C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Idore-1", "C-Lucius-1", "C-Maze-1", "C-Sabrina-1", "C-Templar-1", "C-Theia-1",
   "C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Idore-1", "C-Lucius-1", "C-Maze-1", "C-Sabrina-1", "C-Templar-1", "C-Theia-1",
   "C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-Idore-1", "C-Lucius-1", "C-Maze-1", "C-Sabrina-1", "C-Templar-1", "C-Theia-1",
@@ -39,9 +38,7 @@ const diamond_chars = ["C-Fabian-1", "C-Gwen-1", "C-Hector-1", "C-Ho-Jin-1", "C-
   "C-Fabian-3", "C-Gwen-3", "C-Hector-3", "C-Ho-Jin-3", "C-Idore-3", "C-Lucius-3", "C-Maze-3", "C-Sabrina-3", "C-Templar-3", "C-Theia-3",
   "C-Fabian-3", "C-Gwen-3", "C-Hector-3", "C-Ho-Jin-3", "C-Idore-3", "C-Lucius-3", "C-Maze-3", "C-Sabrina-3", "C-Templar-3", "C-Theia-3",
   "C-Fabian-4", "C-Gwen-4", "C-Hector-4", "C-Ho-Jin-4", "C-Idore-4", "C-Lucius-4", "C-Maze-4", "C-Sabrina-4", "C-Templar-4", "C-Theia-4"];
-
 const gold_pets = ["P-Chiron-1", "P-Fleta-1", "P-Griffin-1"];
-
 const diamond_pets = ["P-Chiron-1", "P-Fleta-1", "P-Griffin-1",
   "P-Chiron-1", "P-Fleta-1", "P-Griffin-1",
   "P-Chiron-1", "P-Fleta-1", "P-Griffin-1",
@@ -63,8 +60,10 @@ const diamond_pets = ["P-Chiron-1", "P-Fleta-1", "P-Griffin-1",
   "P-Chiron-3", "P-Fleta-3", "P-Griffin-3",
   "P-Chiron-3", "P-Fleta-3", "P-Griffin-3"
 ];
-
 const diamond_land = ["L-Forrest Land"];
+
+
+//info and mint states
 const initialInfoState = {
   connected: false,
   status: null,
@@ -74,7 +73,6 @@ const initialInfoState = {
   address: null,
   contractJSON: null,
 };
-
 const initialMintState = {
   loading: false,
   status: `Mint your ${contract.name}`,
@@ -85,13 +83,10 @@ const initialMintState = {
 
 
 
+//main minter app
 function Minter() {
   const [info, setInfo] = useState(initialInfoState);
   const [mintInfo, setMintInfo] = useState(initialMintState);
-
-
-  console.log(info);
-
   const init = async (_request, _contractJSON) => {
     if (window.ethereum.isMetaMask) {
       try {
@@ -134,7 +129,6 @@ function Minter() {
       }));
     }
   };
-
   const initListeners = () => {
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", () => {
@@ -146,6 +140,8 @@ function Minter() {
     }
   };
 
+
+  // supply functions
   const getSupplySilver = async () => {
     const params = {
       to: info.contractJSON.address,
@@ -216,7 +212,8 @@ function Minter() {
     }
   };
 
-  // ogValue - updatedValue 
+
+  // Mint or buy functions
   const MintSilverChest = async () => {
     const params = {
       to: info.contractJSON.address,
@@ -257,6 +254,8 @@ function Minter() {
           linkD.style.display = 'none';
           console.log("Silver")
           var value = silver_chars[Math.floor(Math.random() * silver_chars.length)];
+
+          // recieved values
           return "Received NFT : " + [value];
           document.getElementById()
 
@@ -325,6 +324,8 @@ function Minter() {
           var value1 = gold_chars[Math.floor(Math.random() * gold_chars.length)];
           var value2 = gold_chars[Math.floor(Math.random() * gold_chars.length)];
           var value3 = gold_pets[Math.floor(Math.random() * gold_pets.length)];
+
+          // recieved values
           return "Received NFT : " + [value1, value2, value3];
         } else {
           return "Purchase unsuccessful, please try again..."
@@ -396,6 +397,7 @@ function Minter() {
           var value6 = diamond_pets[Math.floor(Math.random() * diamond_pets.length)];
           var value7 = diamond_land[Math.floor(Math.random() * diamond_land.length)];
 
+          // recieved values
           return "Received NFT : " + [value1, value2, value3, value4, value5, value6, value7];
         } else {
           return "Purchase unsuccessful, please try again..."
@@ -417,30 +419,19 @@ function Minter() {
       }));
     }
   };
-
-  const updateAmount = (newAmount) => {
-    if (newAmount <= 5 && newAmount >= 1) {
-      setMintInfo((prevState) => ({
-        ...prevState,
-        amount: newAmount,
-      }));
-    }
-  };
-
   const connectToContract = (_contractJSON) => {
     init("eth_requestAccounts", _contractJSON);
   };
-
   useEffect(() => {
     connectToContract(contract);
     initListeners();
   }, []);
-
   useEffect(() => {
     if (info.connected) {
     }
   }, [info.connected]);
 
+  // cards to mint + buttons
   return (
     <div className="page" >
       <div class="Navbar">  <div className="card_footer colorGradient">
