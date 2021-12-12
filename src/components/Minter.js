@@ -431,7 +431,7 @@ function Minter() {
     }
   }, [info.connected]);
 
-  // cards to mint + buttons
+  // cards to mint + buttons + nav bar connected wallet
   return (
     <div className="page" >
       <div class="Navbar">  <div className="card_footer colorGradient">
